@@ -6,7 +6,7 @@
 
         <div class="container">
             <div class="card-container">
-                <div v-for="n in data.articles" :key="data.articles.url" class="card">
+                <div v-for="n in news.articles" :key="news.articles.url" class="card">
                     <NewsCard :news="n"/>
                 </div>
             </div>
@@ -25,12 +25,14 @@ const query = ref('')
 
 const search = ref('tinubu')
 
-const { data, error } = await useFetch(`/api/everything/${search.value}`);
+const { data: news } = await useFetch('https://newsapi.org/v2/everything?q=bitcoin&apiKey=edaad9b9d20f4153b099f76e6ccd39ce')
 
-if (!data.value && !error.value) {
-    console.warn("No data received and no error occurred, returning an empty object");
+// const { data, error } = await useFetch(`/api/everything/${search.value}`);
 
-}
+// if (!data.value && !error.value) {
+//     console.warn("No data received and no error occurred, returning an empty object");
+
+// }
 
 </script>
 
