@@ -14,14 +14,14 @@
                     </ul>
     
                     <div class="search">
-                        <input type="text" placeholder="search">
+                        <input type="text" placeholder="search keyword" v-model="search" @keyup.enter="fetchNews()">
                     </div>
                 </div>
             </nav>
         </header>
 
         <div>
-            <slot/>
+            <slot :site="blog"/>
         </div>
 
         <footer>
@@ -31,7 +31,13 @@
 </template>
 
 <script setup>
+const search = ref('')
+const blog = ref({})
 
+const fetchNews = (async() =>{
+    const response = await useFetch(`/api/everything/${search.value}`)
+    blog.value = response.data
+})
 </script>
 
 <style scoped>
