@@ -10,7 +10,8 @@
         <div class="container">
             <div class="card-container">
                 <div v-for="n in news.value.articles" :key="index" class="card">
-                    <NewsCard :news="n"/>
+                    <!-- <NewsCard :news="n"/> -->
+                     <p>{{ n.author }}</p>
                 </div>
             </div>
         </div>

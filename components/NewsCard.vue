@@ -1,7 +1,7 @@
 <template>
             
                 <NuxtLink :to="{ name: news-detail, params: { id: news.url}, state: { article: news} }" class="card-link" >
-                    <img :src="`${news.urlToImage}`" alt="ugiiiiiibi">
+                    <img :src="`${news.urlToImage}`" alt="[photo]">
                     <p>{{ news.title }}</p>
                     <div class="least">
                         <p>{{ news.author }}</p>
