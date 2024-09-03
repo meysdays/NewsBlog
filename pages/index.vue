@@ -1,17 +1,16 @@
 <template>
-    <!-- <NuxtLoadingIndicator/> -->
     <div>
         <h2>Home</h2>
         <p>Lorem ipsum dolor sit amet consectetur.</p>
         <!-- <div>
-            {{ news.value.articles }}
+            {{ news }}
         </div> -->
 
         <div class="container">
             <div class="card-container">
                 <div v-for="n in news.value.articles" :key="index" class="card">
-                    <!-- <NewsCard :news="n"/> -->
-                     <p>{{ n.author }}</p>
+                    <NewsCard :news="n"/>
+                     <!-- <p>{{ n.author }}</p> -->
                 </div>
             </div>
         </div>
@@ -30,6 +29,7 @@ import Index from './products/index.vue';
 const query = ref('')
 const search = ref('tinubu')
 const news = ref({})
+
 
 const response = await useFetch('https://newsapi.org/v2/everything?q=bitcoin&apiKey=edaad9b9d20f4153b099f76e6ccd39ce')
 news.value = response.data
