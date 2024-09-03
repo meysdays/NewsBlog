@@ -12,6 +12,8 @@
 </template>
 
 <script setup>
+import Index from '~/pages/index.vue';
+
 const {news} = defineProps(['news'])
 </script>
 

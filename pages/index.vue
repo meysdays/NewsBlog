@@ -3,10 +3,13 @@
     <div>
         <h2>Home</h2>
         <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <!-- <div>
+            {{ news.value.articles }}
+        </div> -->
 
         <div class="container">
             <div class="card-container">
-                <div v-for="n in news.articles" :key="news.articles.url" class="card">
+                <div v-for="n in news.value.articles" :key="index" class="card">
                     <NewsCard :news="n"/>
                 </div>
             </div>
@@ -20,12 +23,19 @@
 </template>
 
 <script setup>
+import Index from './products/index.vue';
+
 
 const query = ref('')
-
 const search = ref('tinubu')
+const news = ref({})
 
-const { data: news } = await useFetch('https://newsapi.org/v2/everything?q=bitcoin&apiKey=edaad9b9d20f4153b099f76e6ccd39ce')
+const response = await useFetch('https://newsapi.org/v2/everything?q=bitcoin&apiKey=edaad9b9d20f4153b099f76e6ccd39ce')
+news.value = response.data
+console.log(news);
+
+
+// const { data: news } = await useFetch('https://newsapi.org/v2/everything?q=bitcoin&apiKey=edaad9b9d20f4153b099f76e6ccd39ce')
 
 // const { data, error } = await useFetch(`/api/everything/${search.value}`);
 
