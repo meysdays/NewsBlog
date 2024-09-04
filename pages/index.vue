@@ -8,7 +8,7 @@
 
         <div class="container">
             <div class="card-container">
-                <div v-for="n in news.articles" :key="index" class="card">
+                <div v-for="n in users.articles" :key="index" class="card">
                     <NewsCard :news="n"/>
                      <!-- <p>{{ n.author }}</p> -->
                 </div>
@@ -24,12 +24,15 @@
 
 <script setup>
 // const {newsKey} = useRuntimeConfig()
+onMounted(async () => {
+    await nextTick()
+})
 
 const search = ref('tinubu')
-const {data: news} = await useFetch(() => `/api/everything/${search.value}`, {
-    immediate: true
-})
-console.log(news);
+const users = ref()
+const {data} = await useFetch(() => `/api/everything/${search.value}`)
+users.value = data.value;
+console.log(users);
 
 
 const query = ref('')
