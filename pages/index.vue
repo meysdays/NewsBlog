@@ -23,7 +23,6 @@
 </template>
 
 <script setup>
-import Index from './products/index.vue';
 
 
 const query = ref('')
@@ -32,7 +31,9 @@ const news = ref({})
 
 const { site } = defineProps(['site'])
 
-const response = await useFetch('https://newsapi.org/v2/everything?q=bitcoin&apiKey=edaad9b9d20f4153b099f76e6ccd39ce')
+const response = await useFetch('https://newsapi.org/v2/everything?q=bitcoin&apiKey=edaad9b9d20f4153b099f76e6ccd39ce',{
+    lazy: true
+})
 news.value = response.data
 console.log(news);
 
