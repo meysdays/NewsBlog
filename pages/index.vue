@@ -8,7 +8,7 @@
 
         <div class="container">
             <div class="card-container">
-                <div v-for="n in news.value.articles" :key="index" class="card">
+                <div v-for="n in news.articles" :key="index" class="card">
                     <NewsCard :news="n"/>
                      <!-- <p>{{ n.author }}</p> -->
                 </div>
@@ -26,16 +26,16 @@
 
 
 const query = ref('')
-// const search = ref('tinubu')
-const news = ref({})
+const search = ref('tinubu')
+// const news = ref({})
 
 const { site } = defineProps(['site'])
 
-const response = await useFetch('/api/everything/bitcoin',{
+const {data: news} = await useFetch(() => `/api/everything/${search.value}`,{
     lazy: true
 })
-news.value = response.data
-console.log(news);
+// news.value = response.data
+// console.log(news);
 
 
 // const { data: news } = await useFetch('https://newsapi.org/v2/everything?q=bitcoin&apiKey=edaad9b9d20f4153b099f76e6ccd39ce')
