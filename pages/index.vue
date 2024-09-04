@@ -23,17 +23,18 @@
 </template>
 
 <script setup>
+// const {newsKey} = useRuntimeConfig()
 
+const search = ref('tinubu')
+const {data: news} = await useFetch(() => `/api/everything/${search.value}`,{
+    lazy: true
+})
 
 const query = ref('')
-const search = ref('tinubu')
 // const news = ref({})
 
 const { site } = defineProps(['site'])
 
-const {data: news} = await useFetch(() => `/api/everything/${search.value}`,{
-    lazy: true
-})
 // news.value = response.data
 // console.log(news);
 
