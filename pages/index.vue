@@ -31,7 +31,7 @@ const news = ref({})
 
 const { site } = defineProps(['site'])
 
-const response = await useFetch('https://newsapi.org/v2/everything?q=bitcoin&apiKey=edaad9b9d20f4153b099f76e6ccd39ce',{
+const response = await useFetch('/api/everything/bitcoin',{
     lazy: true
 })
 news.value = response.data
