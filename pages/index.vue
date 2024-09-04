@@ -26,9 +26,11 @@
 // const {newsKey} = useRuntimeConfig()
 
 const search = ref('tinubu')
-const {data: news} = await useFetch(() => `/api/everything/${search.value}`,{
-    lazy: true
+const {data: news} = await useFetch(() => `/api/everything/${search.value}`, {
+    immediate: true
 })
+console.log(news);
+
 
 const query = ref('')
 // const news = ref({})
