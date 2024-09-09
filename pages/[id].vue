@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div v-for="(n, index) in items" :key="index">
+    <div class="container">
+        <div v-for="(n, index) in items" :key="index" class="card">
             <h1>{{ n.title }}</h1>
             <p>{{ n.author }}</p>
             <p>{{ n.publishedAt }}</p>
