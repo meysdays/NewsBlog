@@ -7,22 +7,21 @@
                         <NuxtLink to="/"> <img src="../assets/union.svg" alt="icon"></NuxtLink>
                         <p>Meta<b>Blog</b></p>
                     </div>
+
                     <ul class="link">
                         <li><NuxtLink to="/">Home</NuxtLink></li>
                         <li><NuxtLink to="/about">Blog</NuxtLink></li>
                         <li><NuxtLink to="/products">Contact</NuxtLink></li>
                     </ul>
     
-                    <div class="search">
-                        <input type="text" placeholder="search keyword" v-model="search" @keyup.enter="fetchNews()">
-                    </div>
                 </div>
             </nav>
         </header>
 
-        <div>
-            <slot :site="blog"/>
-        </div>
+        <main>
+            <slot/>
+            <!-- <NuxtPage/> -->
+        </main>
 
         <footer>
             <a href="https://github.com/meysdays/TodoApp">View Repo</a>
@@ -31,13 +30,25 @@
 </template>
 
 <script setup>
-const search = ref('')
-const blog = ref({})
+const search = ref('trump')
 
-const fetchNews = (async() =>{
-    const response = await useFetch(`/api/everything/${search.value}`)
-    blog.value = response.data
+const pop = ref({})
+const blog = ref([])
+
+watchEffect(async () => {
+    const {data} = await useFetch(
+        `/api/everything/${search.value}`
+    )
+    blog.value = data.value
+    // console.log(blog);
+    
 })
+
+
+// const fetchNews = (async() =>{
+//     const response = await useFetch(`/api/everything/${search.value}`)
+//     blog.value = response.data
+// })
 </script>
 
 <style scoped>

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "ldrs": "^1.0.2",
     "nuxt": "^3.13.0",
     "vue": "latest"
   }
